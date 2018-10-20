@@ -1,6 +1,13 @@
-body{
-    background-image: url('../images/background2.jpg');
-    background-position: center;
+@keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
+
+body	{
+    background-image: url('../images/starfield_background.jpg');
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: animatedBackground 40s linear infinite;
 }
 
 header h1,h2,h3,h4,h5,h6{
@@ -10,3 +17,4 @@ header h1,h2,h3,h4,h5,h6{
 hr{
     border: 1px solid #FFFFFF;
 }
+
