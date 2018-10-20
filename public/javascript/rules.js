@@ -3,7 +3,7 @@ $(function(){
 
     function launchGame(event){
         event.preventDefault();
-        debugger;
+        location.replace('./launchingIntoSpace.html');
     }
 
 });
