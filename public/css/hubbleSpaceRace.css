@@ -5,9 +5,9 @@
 
 body	{
     background-image: url('../images/starfield_background.jpg');
-    background-position: 0px 0px;
+    /*background-position: 0px 0px;
     background-repeat: repeat-x;
-    animation: animatedBackground 40s linear infinite;
+    animation: animatedBackground 40s linear infinite;*/
 }
 
 header h1,h2,h3,h4,h5,h6{
@@ -18,3 +18,11 @@ hr{
     border: 1px solid #FFFFFF;
 }
 
+body {
+    padding: 2em;
+}
+
+.transparent{
+    background: transparent;
+    border: 0;
+}
