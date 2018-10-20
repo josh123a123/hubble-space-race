@@ -3,7 +3,7 @@ $(document).on('click', 'img', playSound);
 
 function confirmPiece(){
     var piece = $('input[name=spaceship]:checked').val();
-    console.log(piece);
+    window.location.href = 'rules.html';
 }
 
 function playSound(){

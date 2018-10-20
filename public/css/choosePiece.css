@@ -5,13 +5,32 @@ label > input{ /* HIDE RADIO */
 }
 label > input + img{ /* IMAGE STYLES */
     cursor:pointer;
-    border:2px solid transparent;
+    border: 0.5em solid transparent;
 }
 label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-    border:2px solid #f00;
+    padding: 1em;
+    border: 0.5em solid forestgreen;
 }
 /*********************************************************************/
 
-h3{
+h1{
+    text-align: center;
+}
+
+#confirmPieceBtn{
+    width: 100%;
+}
+
+#piecesContainer{
+    border: 0.3em solid blue;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+#piecesDiv{
+    margin: auto;
+}
+
+.pieceName{
     text-align: center;
 }
