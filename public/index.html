@@ -1,139 +1,145 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset = "utf-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1">
-        <title>Hubble Space Race</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hubble Space Race</title>
+    <!-- Firebase App is always required and must be first -->
+    <script src="/__/firebase/5.5.5/firebase-app.js"></script>
 
-        <!-- update the version number as needed -->
-        <script defer src = "/__/firebase/5.5.5/firebase-app.js"></script>
-        <script src = "https://apis.google.com/js/platform.js" async defer></script>
-        <meta name = "google-signin-client_id"
-              content = "177552291195-hiqmbfn06ob03g0uppaok8u81f3cg2go.apps.googleusercontent.com">
+    <!-- Add additional services that you want to use -->
+    <script src="/__/firebase/5.5.5/firebase-auth.js"></script>
+    <script src="/__/firebase/5.5.5/firebase-database.js"></script>
 
-        <!-- include only the Firebase features as you need -->
-        <script defer src = "/__/firebase/5.5.5/firebase-auth.js"></script>
-        <script defer src = "/__/firebase/5.5.5/firebase-database.js"></script>
-        <!-- initialize the SDK after all desired features are loaded -->
-        <script defer src = "/__/firebase/init.js"></script>
+    <script src="/__/firebase/init.js"></script>
 
-        <style media = "screen">
-            body {
-                background: #ECEFF1;
-                color: rgba(0, 0, 0, 0.87);
-                font-family: Roboto, Helvetica, Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-            }
+    <style media="screen">
+        body {
+            background: #ECEFF1;
+            color: rgba(0, 0, 0, 0.87);
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-            #message {
+        #message {
+            background: white;
+            max-width: 360px;
+            margin: 100px auto 16px;
+            padding: 32px 24px;
+            border-radius: 3px;
+        }
+
+        #message h2 {
+            color: #ffa100;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0 0 8px;
+        }
+
+        #message h1 {
+            font-size: 22px;
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.6);
+            margin: 0 0 16px;
+        }
+
+        #message p {
+            line-height: 140%;
+            margin: 16px 0 24px;
+            font-size: 14px;
+        }
+
+        #message a {
+            display: block;
+            text-align: center;
+            background: #039be5;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        #message, #message a {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        #load {
+            color: rgba(0, 0, 0, 0.4);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            body, #message {
+                margin-top: 0;
                 background: white;
-                max-width: 360px;
-                margin: 100px auto 16px;
-                padding: 32px 24px;
-                border-radius: 3px;
+                box-shadow: none;
             }
 
-            #message h2 {
-                color: #ffa100;
-                font-weight: bold;
-                font-size: 16px;
-                margin: 0 0 8px;
+            body {
+                border-top: 16px solid #ffa100;
             }
+        }
+    </style>
+</head>
+<body>
+<div id="message">
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+</div>
+<p id="load">Firebase SDK Loading&hellip;</p>
 
-            #message h1 {
-                font-size: 22px;
-                font-weight: 300;
-                color: rgba(0, 0, 0, 0.6);
-                margin: 0 0 16px;
-            }
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        try {
+            let app = firebase.app();
+            let features = ['auth', 'database'].filter(feature => typeof app[feature] === 'function');
+            document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
 
-            #message p {
-                line-height: 140%;
-                margin: 16px 0 24px;
-                font-size: 14px;
-            }
 
-            #message a {
-                display: block;
-                text-align: center;
-                background: #039be5;
-                text-transform: uppercase;
-                text-decoration: none;
-                color: white;
-                padding: 16px;
-                border-radius: 4px;
-            }
+        } catch (e) {
+            console.error(e);
+            document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                console.log('user is already signed in');
+            } else {
+                let provider = new firebase.auth.GoogleAuthProvider();
+                provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+                firebase.auth().signInWithPopup(provider).then(function (result) {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    let token = result.credential.accessToken;
+                    // The signed-in user info.
+                    let user = result.user;
+                    let database = firebase.database();
+                    database.ref('/users/' + user.uid).update(user.providerData[0]);
 
-            #message, #message a {
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-            }
-
-            #load {
-                color: rgba(0, 0, 0, 0.4);
-                text-align: center;
-                font-size: 13px;
-            }
-
-            @media (max-width: 600px) {
-                body, #message {
-                    margin-top: 0;
-                    background: white;
-                    box-shadow: none;
-                }
-
-                body {
-                    border-top: 16px solid #ffa100;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div id = "message">
-            <div class = "g-signin2" data-onsuccess = "onSignIn"></div>
-            <a href="#" onclick="signOut();">Sign out</a>
-            <script>
-                function signOut() {
-                    var auth2 = gapi.auth2.getAuthInstance();
-                    auth2.signOut().then(function () {
-                        console.log('User signed out.');
-                    });
-                }
-            </script>
-        </div>
-        <p id = "load">Firebase SDK Loading&hellip;</p>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-                // // The Firebase SDK is initialized and available here!
-                //
-                // firebase.auth().onAuthStateChanged(user => { });
-                // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-                //
-                // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-                try {
-                    let app = firebase.app();
-                    let features = ['auth', 'database'].filter(feature => typeof app[feature] === 'function');
-                    document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-                } catch (e) {
-                    console.error(e);
-                    document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-                }
-
-            });
-            function onSignIn(googleUser) {
-                var profile = googleUser.getBasicProfile();
-                console.log(profile); // Do not send to your backend! Use an ID token instead.
-                /*
-                firebase.auth().signInWithCustomToken(token).catch(function(error) {
+                    // ...
+                }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    console.log('error in authentication',errorMessage);
                     // ...
-                });*/
+                });
             }
-        </script>
-    </body>
+        });
+
+    });
+
+</script>
+</body>
 </html>
