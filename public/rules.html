@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Rules | Hubble Space Race</title>
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href = "css/hubbleSpaceRace.css"/>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -12,20 +15,53 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
+    <header class = "text-white">
         <h1>Hubble Space Race</h1>
-        <h2>Rules</h2>
     </header>
-    <section id = "instructions">
-
+    <section id = "instructions" class = "text-white">
+        <div class = "container">
+            <hr/>
+            <h2>Rules</h2>
+            <ol>
+                <li>Spin the wheel to see how many lightyears you'll fly through space</li>
+                <li>Answer the questions to earn resources</li>
+                <li>
+                    After you answer the questions, if no one else has claimed it you can choose to build a Research Station on the celestial body. If someone has claimed it,
+                    you will have to pay them for letting you stop there.
+                </li>
+                <li>
+                    Keep spinning, answering questions, and building Research Stations. Once you've reached 500 space $$ you will have conquered space!
+                </li>
+            </ol>
+            <hr/>
+        </div>
     </section>
 
-    <section id = "yourResources">
-
+    <section id = "yourResources" class = text-white>
+        <div class = "container">
+            <h2>Your Resources</h2>
+            <div class = "row">
+                <div class = "col-md-3">
+                    <h4>Hydrogen = 1</h4>
+                </div>
+                <div class = "col-md-3">
+                    <h4>Boron = 5</h4>
+                </div>
+                <div class = "col-md-3">
+                    <h4>Neon = 10</h4>
+                </div>
+                <div class = "col-md-3">
+                    <h4>Calcuium = 20</h4>
+                </div>
+            </div>
+            <hr/>
+        </div>
     </section>
 
     <section id = "enterGame">
-
+        <div class = "container">
+            <button class = "btn btn-lg float-right">Launch!</button>
+        </div>
     </section>
 
 </body>

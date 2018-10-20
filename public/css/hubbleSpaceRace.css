@@ -1,4 +1,12 @@
-background{
-    background-image: url('../images/background.jpg');
+body{
+    background-image: url('../images/background2.jpg');
     background-position: center;
+}
+
+header h1,h2,h3,h4,h5,h6{
+    text-align: center;
+}
+
+hr{
+    border: 1px solid #FFFFFF;
 }
