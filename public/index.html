@@ -111,7 +111,7 @@
         }
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                console.log('user is already signed in');
+                window.location.href = 'joinGame.html';
             } else {
                 let provider = new firebase.auth.GoogleAuthProvider();
                 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
