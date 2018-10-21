@@ -3,6 +3,7 @@
     font-style: normal;
     font-weight: 100;
 }
+
 #messages {
     overflow: auto;
     height: 120px;
@@ -70,4 +71,14 @@ h1 {
     top: 0.3em;
     left: 50%;
     transform: translate(-50%);
+}
+
+#scoreBox{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 0.1em solid #278ED1;
+    border-bottom: 0.1em solid #278ED1;
+    border-radius: .5em;
+    background-color:rgba(0, 0, 0, 0.6);
 }
