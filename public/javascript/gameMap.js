@@ -75,10 +75,8 @@ firebase.auth().onAuthStateChanged(function (user) {
             loadChat(chatRef);
         } catch (e) {
 
-            //console.error('error joining game', e.message);
+            console.error('error joining game', e.message);
         }
-
-        //console.log(snapshot);
     });
 
 
@@ -93,9 +91,6 @@ function loadChat(chatRef) {
             //console.log(chatLine);
         });
         let messages = $('#messages')[0];
-        /*console.log('scrollHeight', messages.scrollHeight);
-        console.log('scrollTop', messages.scrollTop);
-        console.log('clientHeight', messages.clientHeight);*/
         if (firstTime) {
             messages.scrollTop = messages.scrollHeight;
             firstTime = false;
