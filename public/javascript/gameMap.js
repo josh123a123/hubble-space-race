@@ -40,6 +40,7 @@ $(function () {
                 chatBox.append('<div>' + chatLine + '</div>');
                 console.log(chatLine);
             });
+            chatBox.scrollTop(chatBox.prop("scrollHeight"));
         });
     }
 

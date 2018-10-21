@@ -15,7 +15,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 200px;
+    width: auto;
     border-right: 0.3em solid white;
     border-top: 0.3em solid white;
 }
