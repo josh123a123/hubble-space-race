@@ -1,8 +1,10 @@
 $(document).on('click', '#confirmPieceBtn', confirmPiece);
 $(document).on('click', 'img', playSound);
-/*$(function(){
-    disablePieces();
-});*/
+$(function () {
+    firebase.auth().onAuthStateChanged(function (user) {
+        disablePieces();
+    });
+});
 
 function disablePieces() {
 
@@ -16,15 +18,19 @@ function disablePieces() {
         try {
             let userToGameJson = snapshot.toJSON();
             let gameId = userToGameJson.gameId;
-            database.ref('/currentGames/' + gameId).on("value",function(snapshot){
+            database.ref('/currentGames/' + gameId).on("value", function (snapshot) {
                 let currentGame = snapshot.toJSON();
                 let selectedPieces = currentGame.selectedPieces;
-                selectedPieces.forEach(function(value){
-                    console.log(value);
-                    $('#piecesDiv').find('input').filter(function(){
-                        return this.value==value;
-                    }).disable();
-                })
+                for (const key in selectedPieces) {
+                    if (selectedPieces.hasOwnProperty(key)) {
+                        $('#piecesDiv').find('input').filter(function () {
+                            if ($(this).val() === selectedPieces[key]) {
+                                $(this).closest('label').hide();
+                                return true;
+                            }
+                        });
+                    }
+                }
             });
 
         } catch (e) {
