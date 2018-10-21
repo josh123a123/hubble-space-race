@@ -6,7 +6,7 @@ $(function () {
     addMessageInput.keypress(addMessage);
 
     $('.answerQuestion').on('submit', function () {
-        let skipValidation = $("input[name = 'skipValidation']").val();
+        let skipValidation = $(this).find("input[name = 'skipValidation']").val();
         let questions = $('.questionContainer');
         let numQuestions = questions.length;
         let nextQuestion = Math.floor(Math.random() * numQuestions);
@@ -17,7 +17,7 @@ $(function () {
             nextQuestion.show();
             return null;
         }
-        let selectedAnswer = $('input[name="selectedAnswer"]').val();
+        let selectedAnswer = $(this).find('input[name="selectedAnswer"]').val();
         selectedAnswer = '#' + selectedAnswer;
         if ($(selectedAnswer).hasClass('correct')) {
 
@@ -36,7 +36,6 @@ $(function () {
                     userRef.once('value', function (snapshot) {
                         let userJson = snapshot.toJSON();
                         let score = (userJson.score);
-
                         score++;
                         let userData = {
                             score: score
