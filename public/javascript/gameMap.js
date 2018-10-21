@@ -15,6 +15,7 @@ $(function () {
         if (skipValidation == 'true') {
             $('.questionContainer').hide();
             nextQuestion.show();
+            return null;
         }
         let selectedAnswer = $('input[name="selectedAnswer"]').val();
         selectedAnswer = '#' + selectedAnswer;
