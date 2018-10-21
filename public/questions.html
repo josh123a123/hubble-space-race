@@ -25,7 +25,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-    <script src='javascript/choosePiece.js'></script>
+    <script src='javascript/questions.js'></script>
     <title>Hubble Space Race</title>
 </head>
 <body>
@@ -34,12 +34,24 @@
 </header>
 <div class='container text-white text-center'>
     <hr/>
-    <h2>
-        Answer the questions correctly to earn the resources you need to continue your journey to Super Earth!
-    </h2>
-    <hr/>
     <div class = "questions">
-        <div id = "q1" style = "display: none;"></div>
+
+        <div id = "q1" class = "questionContainer">
+            <form class = "answerQuestion">
+                <input type = "hidden" name = "questionNumber" value = "1"/>
+                <input type = "hidden" name = "questionAnswer" value = "Q1B"/>
+                <input type = "hidden" name = "selectedAnswer" value = "-1"/>
+                <img src = "images/questions/QUESTION-1.png" alt = "Question 1" class = "img-fluid"/>
+                <img id = "Q1A" src = "images/answers/QUESTION-1(a).png" alt = "Question 1, Answer A" class = "img-fluid answer"/>
+                <img id = "Q1B" src = "images/answers/QUESTION-1(b).png" alt = "Question 1, Answer B" class = "img-fluid answer correct"/>
+                <img id = "Q1C" src = "images/answers/QUESTION-1(c).png" alt = "Question 1, Answer C" class = "img-fluid answer"/>
+                <img id = "Q1D" src = "images/answers/QUESTION-1(d).png" alt = "Question 1, Answer D" class = "img-fluid answer"/>
+                <button type = "submit" class = "btn transparent">
+                    <img src = "assets/buttons/CONFIRM.png"/>
+                </button>
+            </form>
+        </div>
+
         <div id = "q2" style = "display: none;"></div>
         <div id = "q3" style = "display: none;"></div>
         <div id = "q4" style = "display: none;"></div>
