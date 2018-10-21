@@ -37,7 +37,6 @@ $(function () {
             chatBox.html('');
             snapshot.forEach(function (value, key) {
                 let chatLine = value.toJSON();
-                //TODO: add chat;
                 chatBox.append('<div>' + chatLine + '</div>');
                 console.log(chatLine);
             });
