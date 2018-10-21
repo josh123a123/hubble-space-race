@@ -1,4 +1,9 @@
 /****************Replace buttons with rockets********************** */
+*{
+    font-family: aviano-future, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
 label > input{ /* HIDE RADIO */
     visibility: hidden; /* Makes input not-clickable */
     position: absolute; /* Remove input from document flow */

@@ -1,14 +1,12 @@
-#scoreBox {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-right: 0.3em solid white;
-    border-bottom: 0.3em solid white;
+*{
+    font-family: aviano-future, sans-serif;
+    font-style: normal;
+    font-weight: 100;
 }
-
 #messages {
     overflow: auto;
     height: 120px;
+    background-color:rgba(0, 0, 0, 0.6);
 }
 
 #chatBox {
@@ -16,23 +14,48 @@
     bottom: 0;
     left: 0;
     width: auto;
-    border-right: 0.3em solid white;
-    border-top: 0.3em solid white;
+    border-right: 0.1em solid #278ED1;
+    border-top: 0.1em solid #278ED1;
+    border-radius: .5em;
+    background-color:rgba(0, 0, 0, 0.6);
 }
 
 #chatBox > * {
     padding-left: 1em;
     padding-right: 1em;
+    border-radius: .5em;
 }
 
 #usersBox {
     position: absolute;
     top: 0;
     right: 0;
-    border-left: 0.3em solid white;
-    border-bottom: 0.3em solid white;
+    border-left: 0.1em solid #278ED1;
+    border-bottom: 0.1em solid #278ED1;
+    border-radius: 1em;
+    background-color:rgba(0, 0, 0, 0.6);
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
 }
 
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #278ED1;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #278ED1;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #278ED1;
+}
 #usersBox > * {
     padding-left: 1em;
     padding-right: 1em;
