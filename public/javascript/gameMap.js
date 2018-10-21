@@ -2,7 +2,8 @@ $(function () {
     let chatBox = $('#messages');
     let usersBox = $('#usersBox');
     let addMessageInput = $('#addMessage');
-    let addMessageButton = $('#addMessageButton');
+    addMessageInput.keypress(addMessage);
+
     let gameRef = null;
     let usersRef = null;
     let chatRef = null;
@@ -60,11 +61,14 @@ $(function () {
             });
         });
     }
-    addMessageButton.on('click',function(){
-        let message = addMessageInput.val();
-        chatRef = gameRef.child('chat/');
-        chatRef.push(message);
-        addMessageInput.val('');
-    });
+
+    function addMessage(event) {
+        if (event.keyCode === 13 && addMessageInput.val() !== '') {
+            let message = addMessageInput.val();
+            chatRef = gameRef.child('chat/');
+            chatRef.push(message);
+            addMessageInput.val('');
+        }
+    }
 
 });
