@@ -20,12 +20,16 @@ function play() {
         function joinGame(gameRef){
             gameRef.orderByChild('full').equalTo(false).limitToFirst(1).once('value', function (subSnapshot) {
                 let currentGame = subSnapshot.toJSON();
-                if(!currentGame || currentGame.complete){
+                if(!currentGame){
                     createGame();
                     return null
                 }
                 let currentGameId = Object.keys(currentGame)[0];
                 currentGame = currentGame[currentGameId];
+                if(currentGame.complete){
+                    createGame();
+                    return null
+                }
                 let currentGameRef = database.ref('/currentGames/' + currentGameId);
                 currentGame.numUsers++;
                 if (currentGame.numUsers === 6) {
