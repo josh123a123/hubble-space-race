@@ -5,9 +5,9 @@
 
 body	{
     background-image: url('../images/starfield_background.jpg');
-    /*background-position: 0px 0px;
-    background-repeat: repeat-x;
-    animation: animatedBackground 40s linear infinite;*/
+    background-position: 0px 0px;
+    background-repeat: repeat;
+    animation: animatedBackground 40s linear infinite;
 }
 
 header h1,h2,h3,h4,h5,h6{

@@ -9,28 +9,6 @@ label > input + img{ /* IMAGE STYLES */
 }
 label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     padding: 1em;
-    border: 0.5em solid forestgreen;
+    border: 0.5em solid white;
 }
 /*********************************************************************/
-
-h1{
-    text-align: center;
-}
-
-#confirmPieceBtn{
-    width: 100%;
-}
-
-#piecesContainer{
-    border: 0.3em solid blue;
-    border-radius: 1em;
-    padding: 1em;
-}
-
-#piecesDiv{
-    margin: auto;
-}
-
-.pieceName{
-    text-align: center;
-}
