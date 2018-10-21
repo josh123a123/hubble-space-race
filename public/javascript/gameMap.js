@@ -7,17 +7,13 @@ $(function () {
 
     $('.answerQuestion').on('submit', function () {
         let skipValidation = $("input[name = 'skipValidation']").val();
-        if(skipValidation == 'true'){
-            let qNum = Math.floor(Math.random() * 2) + 1;
-            $('.questionContainer').each(function(){
-                if(this.id == 'q' + qNum){
-                    console.log('show');
-                    $(this).show();
-                } else{
-                    console.log('hide');
-                    $(this).hide();
-                }
-            });
+        let questions = $('.questionContainer');
+        let numQuestions = questions.length;
+        let nextQuestion = Math.floor(Math.random() * numQuestions);
+        nextQuestion = $(questions[nextQuestion]);
+        if (skipValidation == 'true') {
+            $('.questionContainer').hide();
+            nextQuestion.show();
         }
         let selectedAnswer = $('input[name="selectedAnswer"]').val();
         selectedAnswer = '#' + selectedAnswer;
@@ -44,17 +40,14 @@ $(function () {
                             score: score
                         };
                         userRef.update(userData);
-                        let qNum = Math.floor(Math.random() * 46);
-                        $('.questionContainer').each(function () {
-                            console.log(this.id);
-                            if (this.id == 'q' + qNum) {
-                                console.log('show');
-                                $(this).show();
-                            } else {
-                                console.log('hide');
-                                $(this).hide();
-                            }
-                        })
+                        let questions = $('.questionContainer');
+                        let numQuestions = questions.length;
+                        let nextQuestion = Math.floor(Math.random() * numQuestions);
+                        nextQuestion = $(questions[nextQuestion]);
+                        if (skipValidation == 'true') {
+                            $('.questionContainer').hide();
+                            nextQuestion.show();
+                        }
                     });
                 } catch (e) {
                     console.log(e.message);
