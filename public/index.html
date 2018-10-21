@@ -111,19 +111,18 @@
         }
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                window.location.href = 'joinGame.html';
+                let database = firebase.database();
+                database.ref('/users/' + user.uid).update(user.providerData[0]).then(function () {
+                    window.location.href = 'joinGame.html';
+                });
             } else {
                 let provider = new firebase.auth.GoogleAuthProvider();
                 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
                 firebase.auth().signInWithPopup(provider).then(function (result) {
                     // This gives you a Google Access Token. You can use it to access the Google API.
                     let token = result.credential.accessToken;
-                    // The signed-in user info.
-                    let user = result.user;
-                    let database = firebase.database();
-                    database.ref('/users/' + user.uid).update(user.providerData[0]);
 
-                    // ...
+                    console.log('auth new');
                 }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
@@ -132,7 +131,7 @@
                     var email = error.email;
                     // The firebase.auth.AuthCredential type that was used.
                     var credential = error.credential;
-                    console.log('error in authentication',errorMessage);
+                    console.log('error in authentication', errorMessage);
                     // ...
                 });
             }

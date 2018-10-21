@@ -20,6 +20,8 @@ $(function () {
                 currentGameUserRef = usersRef.child(uid + '/');
                 chatRef = gameRef.child('chat/');
                 loadUsers(usersRef);
+                loadChat(chatRef);
+                loadScore(currentGameUserRef);
             } catch (e) {
 
                 console.error('error joining game', e.message);
@@ -31,12 +33,30 @@ $(function () {
     });
 
 
-    function loadChat() {
-
+    function loadChat(chatRef) {
+        chatRef.on('value', function (snapshot) {
+            chatBox.html('');
+            snapshot.forEach(function (value, key) {
+                let chatLine = value.toJSON();
+                //TODO: add chat;
+                //chatBox.append('<div>' + displayName + '</div>');
+                console.log(chatLine);
+            });
+        });
     }
 
-    function loadScore() {
+    function loadScore(usersRef) {
+        usersRef.on('value', function (snapshot) {
+            scoreBox.html('');
+            let user = snapshot.toJSON();
+            let displayName = user.displayName;
+            let piece = user.piece;
+            let userLocation = user.userLocation;
+            //TODO: add score;
+            scoreBox.append('<div>' + displayName + '</div>');
 
+            console.log(user);
+        });
     }
 
     function loadUsers(usersRef) {

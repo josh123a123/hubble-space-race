@@ -5,6 +5,7 @@ $(document).on('click', 'img', playSound);
 });*/
 
 function disablePieces() {
+
     let user = firebase.auth();
     user = user.currentUser.providerData[0];
     let uid = user.uid;
