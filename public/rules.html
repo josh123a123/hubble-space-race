@@ -33,63 +33,18 @@
 </head>
 <body>
 <div id="background">
-    <header class="text-white">
-        <h1>Hubble Space Race</h1>
+    <header class="text-center">
+        <img src = "images/Logo(white)(smaller).png" alt = "Hubble Space Race" class = "img-fluid text-center"/>
     </header>
-    <section id="instructions" class="text-white">
-        <div class="container">
-            <hr/>
-            <h2>Rules</h2>
-            <ol>
-                <li>Spin the wheel to see how many light-years you'll fly through space</li>
-                <li>Answer the questions to earn resources</li>
-                <li>
-                    After you answer the questions, if no one else has claimed it you can choose to build a Research
-                    Station on the celestial body. If someone has claimed it,
-                    you will have to pay them for letting you stop there.
-                </li>
-                <li>
-                    Keep spinning, answering questions, and building Research Stations. Once you've reached a total of
-                    500 resources you will have conquered space!
-                </li>
-            </ol>
-            <p>WATCH OUT: The bonus rounds will stop game play for all players. The first player to answer the questions
-                right will get the bonus resources.</p>
-            <p>HINT: The information at each stop will show up again in the bonus rounds.</p>
-            <hr/>
-        </div>
-    </section>
 
-    <section id="yourResources" class=text-white>
-        <div class="container">
-            <h2>Your Resources</h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <h4>Hydrogen = 1</h4>
-                </div>
-                <div class="col-md-3">
-                    <h4>Boron = 5</h4>
-                </div>
-                <div class="col-md-3">
-                    <h4>Neon = 10</h4>
-                </div>
-                <div class="col-md-3">
-                    <h4>Calcium = 20</h4>
-                </div>
-            </div>
-            <hr/>
-        </div>
-    </section>
-
-    <section id="enterGame">
-        <div class="container">
-            <form id = "launchGame">
-                <button type = "submit" class = "transparent float-right img-fluid">
-                    <img src = "assets/buttons/popup-mockup_0001_START-GAME.png" class = "img-fluid center"/>
-                </button>
-            </form>
-        </div>
-    </section>
+    <div id="yourResources" class="text-center">
+        <img src = "images/RULES.png" alt = "Rules" class = "img-fluid"/>
+        <form id = "launchGame">
+            <button type = "submit" id = "startGameBtn" class = "transparent img-fluid">
+                <img src = "assets/buttons/popup-mockup_0001_START-GAME.png" class = "img-fluid center"/>
+            </button>
+        </form>
+    </div>
 </div>
 </body>
 

@@ -26,3 +26,8 @@ body {
     background: transparent;
     border: 0;
 }
+
+#startGameBtn{
+    position: relative;
+    top: -220px;
+}
