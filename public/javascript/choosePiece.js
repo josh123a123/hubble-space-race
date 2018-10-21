@@ -1,8 +1,8 @@
 $(document).on('click', '#confirmPieceBtn', confirmPiece);
 $(document).on('click', 'img', playSound);
-$(function(){
+/*$(function(){
     disablePieces();
-});
+});*/
 
 function disablePieces() {
     let user = firebase.auth();

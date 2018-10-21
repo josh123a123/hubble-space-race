@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel='stylesheet' href='css/hubbleSpaceRace.css'>
-    <link rel='stylesheet' href='css/joinGame.css'>
+    <link rel='stylesheet' href='css/gameMap.css'>
     
     <!-- Firebase App is always required and must be first -->
     <script src="/__/firebase/5.5.5/firebase-app.js"></script>
@@ -25,22 +25,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-    <script src='javascript/joinGame.js'></script>
+    <script src='javascript/gameMap.js'></script>
 </head>
 <body>
-<header class = "text-white">
-    <img src = "images/Hubblespacerace_stretchedwhite(iconWhite).png" alt = "Hubble Space Race" class = "img-fluid"/>
-</header>
-<section>
-    <div class = "container">
-        <div class = "row">
-            <div class = "col-md-8 mx-auto text-center">
-                <button id = "playBtn" class = "btn transparent">
-                    <img src = "assets/buttons/popup-mockup_0002_JOIN-GAME.png" class = "img-fluid"/>
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
+<h1>Game ID</h1>
+<div id='scoreBox'></div>
+<div id='chatBox'></div>
+<div id='usersBox'></div>
 </body>
 </html>
