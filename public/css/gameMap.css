@@ -6,13 +6,16 @@
     border-bottom: 0.3em solid white;
 }
 
+#messages {
+    overflow: auto;
+    height: 120px;
+}
+
 #chatBox {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 120px;
-    width:200px;
-    overflow: auto;
+    width: 200px;
     border-right: 0.3em solid white;
     border-top: 0.3em solid white;
 }

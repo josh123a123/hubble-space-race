@@ -63,10 +63,7 @@ $(function () {
         let message = addMessageInput.val();
         chatRef = gameRef.child('chat/');
         chatRef.push(message);
-        chatRef.on('child_added', function(snapshot){
-            chatBox.append('<div>' + snapshot.node_.value_ + '</div>');
-            addMessageInput.val('');
-        });
+        addMessageInput.val('');
     });
 
 });
