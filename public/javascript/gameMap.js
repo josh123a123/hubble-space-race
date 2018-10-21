@@ -6,6 +6,21 @@ $(function () {
     addMessageInput.keypress(addMessage);
 
     $('.answerQuestion').on('submit', function () {
+        let skipValidation = $("input[name = 'skipValidation']").val();
+        if(skipValidation == 'true'){
+            let qNum = Math.floor(Math.random() * 2) + 1;
+            console.log(qNum);
+            $('.questionContainer').each(function(){
+                console.log(this.id);
+                if(this.id == 'q' + qNum){
+                    console.log('show');
+                    $(this).show();
+                } else{
+                    console.log('hide');
+                    $(this).hide();
+                }
+            });
+        }
         let selectedAnswer = $('input[name="selectedAnswer"]').val();
         selectedAnswer = '#' + selectedAnswer;
         if ($(selectedAnswer).hasClass('correct')) {
