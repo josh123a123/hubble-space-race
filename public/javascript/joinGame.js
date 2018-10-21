@@ -10,50 +10,59 @@ function play() {
     gameRef.once('value', function (snapshot) {
         try {
             if (!snapshot.exists()) {
-                //createnew
-                let newGameData = {
-                    users: {},
-                    "private": false,
-                    createTime: Date.now(),
-                    full: false,
-                    numUsers: 1,
-                    numPlaces: 15
-                };
-
-                user.userLocation = 0;
-                user.score = 0;
-                newGameData.users[uid] = user;
-                newGameData.chat = [];
-                let createdGameRef = gameRef.push(newGameData);
-                userToGame.set({
-                    gameId: createdGameRef.key
-                });
-
-                window.location.href = 'choosePiece.html';
+                createGame();
             } else {
-                gameRef.orderByChild('full').equalTo(false).limitToFirst(1).once('value', function (subSnapshot) {
-                    let currentGame = subSnapshot.toJSON();
-                    let currentGameId = Object.keys(currentGame)[0];
-                    currentGame = currentGame[currentGameId];
-                    let currentGameRef = database.ref('/currentGames/' + currentGameId);
-                    currentGame.numUsers++;
-                    if (currentGame.numUsers === 6) {
-                        currentGame.full = true;
-                    }
-                    user.userLocation = 0;
-                    user.score = 0;
-                    currentGame.users[uid] = user;
-                    currentGameRef.set(currentGame);
-                    userToGame.set({
-                        gameId: currentGameId
-                    });
-                    window.location.href = 'choosePiece.html';
-                });
+                joinGame(gameRef);
             }
         } catch (e) {
             console.error('error joining game', e.message);
         }
+        function joinGame(gameRef){
+            gameRef.orderByChild('full').equalTo(false).limitToFirst(1).once('value', function (subSnapshot) {
+                let currentGame = subSnapshot.toJSON();
+                if(!currentGame){
+                    createGame();
+                    return null
+                }
+                let currentGameId = Object.keys(currentGame)[0];
+                currentGame = currentGame[currentGameId];
+                let currentGameRef = database.ref('/currentGames/' + currentGameId);
+                currentGame.numUsers++;
+                if (currentGame.numUsers === 6) {
+                    currentGame.full = true;
+                }
+                user.userLocation = 0;
+                user.score = 0;
+                currentGame.users[uid] = user;
+                currentGameRef.set(currentGame);
+                userToGame.set({
+                    gameId: currentGameId
+                });
+                window.location.href = 'choosePiece.html';
+            });
+        }
+        function createGame(){
+            //createnew
+            let newGameData = {
+                users: {},
+                "private": false,
+                createTime: Date.now(),
+                full: false,
+                numUsers: 1,
+                numPlaces: 15
+            };
 
+            user.userLocation = 0;
+            user.score = 0;
+            newGameData.users[uid] = user;
+            newGameData.chat = [];
+            let createdGameRef = gameRef.push(newGameData);
+            userToGame.set({
+                gameId: createdGameRef.key
+            });
+
+            window.location.href = 'choosePiece.html';
+        }
         //console.log(snapshot);
     });
 }
