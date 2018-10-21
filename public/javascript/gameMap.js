@@ -37,7 +37,7 @@ $(function () {
             snapshot.forEach(function (value, key) {
                 let chatLine = value.toJSON();
                 //TODO: add chat;
-                //chatBox.append('<div>' + displayName + '</div>');
+                chatBox.append('<div>' + chatLine + '</div>');
                 console.log(chatLine);
             });
         });
@@ -59,5 +59,14 @@ $(function () {
             });
         });
     }
+    addMessageButton.on('click',function(){
+        let message = addMessageInput.val();
+        chatRef = gameRef.child('chat/');
+        chatRef.push(message);
+        chatRef.on('child_added', function(snapshot){
+            chatBox.append('<div>' + snapshot.node_.value_ + '</div>');
+            addMessageInput.val('');
+        });
+    });
 
 });
