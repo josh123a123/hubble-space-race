@@ -11,6 +11,7 @@ $(function () {
         let numQuestions = questions.length;
         let nextQuestion = Math.floor(Math.random() * numQuestions);
         nextQuestion = $(questions[nextQuestion]);
+        console.log(nextQuestion);
         if (skipValidation == 'true') {
             $('.questionContainer').hide();
             nextQuestion.show();
@@ -44,6 +45,7 @@ $(function () {
                         let numQuestions = questions.length;
                         let nextQuestion = Math.floor(Math.random() * numQuestions);
                         nextQuestion = $(questions[nextQuestion]);
+                        console.log(nextQuestion);
                         if (skipValidation == 'true') {
                             $('.questionContainer').hide();
                             nextQuestion.show();
@@ -89,7 +91,6 @@ $(function () {
     function endGame(gameRef) {
         gameRef.on('value', function (snapshot) {
             let game = snapshot.toJSON();
-            console.log(game);
             if (game.complete) {
                 $('.questionContainer').hide('');
                 $('#winner').html(game.winner);
@@ -104,7 +105,6 @@ $(function () {
             snapshot.forEach(function (value, key) {
                 let chatLine = value.toJSON();
                 chatBox.append('<div>' + chatLine + '</div>');
-                //console.log(chatLine);
             });
             let messages = $('#messages')[0];
             if (firstTime) {
@@ -137,7 +137,6 @@ $(function () {
                 i++;
 
                 $('.slider').each(function () {
-                    console.log(this);
                     $(this).attr('draggable', false);
                 });
             });
