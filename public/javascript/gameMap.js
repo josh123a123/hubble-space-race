@@ -2,6 +2,7 @@ $(function () {
     let chatBox = $('#messages');
     let usersBox = $('#usersBox');
     let addMessageInput = $('#addMessage');
+    let firstTime = true;
     addMessageInput.keypress(addMessage);
 
     let gameRef = null;
@@ -39,9 +40,19 @@ $(function () {
                 let chatLine = value.toJSON();
                 //TODO: add chat;
                 chatBox.append('<div>' + chatLine + '</div>');
-                console.log(chatLine);
+                //console.log(chatLine);
             });
-            chatBox.scrollTop(chatBox.prop("scrollHeight"));
+            let messages = $('#messages')[0];
+            console.log('scrollHeight', messages.scrollHeight);
+            console.log('scrollTop', messages.scrollTop);
+            console.log('clientHeight', messages.clientHeight);
+            if (firstTime) {
+                messages.scrollTop = messages.scrollHeight;
+                console.log('first');
+                firstTime = false;
+            } else if (messages.scrollTop + messages.clientHeight + 30 > messages.scrollHeight) {
+                messages.scrollTop = messages.scrollHeight;
+            }
         });
     }
 
