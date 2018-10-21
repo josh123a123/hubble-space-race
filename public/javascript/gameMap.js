@@ -116,7 +116,7 @@ function loadUsers(usersRef) {
             let color;
             let userLocation = user.userLocation;
             //TODO: add score;
-            usersBox.append('<div id = "color' + piece + '">' + (piece ? piece : '') + ':' + displayName + ':' + (score ? score : 0) + '</div>');
+            usersBox.append('<div id = "color' + piece + '">' + displayName + ':' + (score ? score : 0) + '</div>');
             $('.slider-wrapper').append('<input min="0" max="30" value="' + score + '" class = "slider" type = "range" id = "rocket' + piece + '"/>');
             i++;
 
