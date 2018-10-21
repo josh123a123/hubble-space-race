@@ -33,7 +33,7 @@ function play(){
             } else{
                 gameRef.orderByChild('full').equalTo(false).limitToFirst(1).once('value', function(subSnapshot){
                     let currentGame = subSnapshot.toJSON();
-                    let currentGameId = Object.keys(currentGame)[0]
+                    let currentGameId = Object.keys(currentGame)[0];
                     currentGame = currentGame[currentGameId];
                     let currentGameRef = database.ref('/currentGames/' + currentGameId);
                     currentGame.numUsers++;
@@ -43,6 +43,10 @@ function play(){
                     user.userLocation = Math.floor(Math.random() * 15);
                     currentGame.users[uid] = user;
                     currentGameRef.set(currentGame);
+                    userToGame.set({
+                        gameId: currentGameId
+                    });
+                    window.location.href = 'choosePiece.html';
                 });
             }
         } catch(e){
