@@ -20,7 +20,7 @@ function play() {
         function joinGame(gameRef){
             gameRef.orderByChild('full').equalTo(false).limitToFirst(1).once('value', function (subSnapshot) {
                 let currentGame = subSnapshot.toJSON();
-                if(!currentGame){
+                if(!currentGame || currentGame.complete){
                     createGame();
                     return null
                 }
