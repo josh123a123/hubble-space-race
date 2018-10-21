@@ -32,10 +32,7 @@ body {
     border: 0;
 }
 
-#startGameBtn{
-    position: relative;
-    top: -220px;
-}
+
 
 .opacity{
     font-family: aviano-future, sans-serif;
