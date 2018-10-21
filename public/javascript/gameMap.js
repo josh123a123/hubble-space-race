@@ -93,7 +93,7 @@ $(function () {
             let game = snapshot.toJSON();
             if (game.complete) {
                 $('.questionContainer').hide('');
-                $('#winner').html(game.winner);
+                $('#winner').html('The Winner Is ' + game.winner);
                 $('#newGame').show();
             }
         });
