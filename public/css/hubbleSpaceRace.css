@@ -36,3 +36,15 @@ body {
     position: relative;
     top: -220px;
 }
+
+.questionContainer{
+    font-family: aviano-future, sans-serif;
+    background-color: #FFFFFF;
+    opacity: 0.6;
+    padding: 20px;
+}
+
+.questionContainer label{
+    font-size: 24px;
+    text-align: left;
+}
