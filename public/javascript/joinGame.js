@@ -17,16 +17,17 @@ function play() {
         } catch (e) {
             console.error('error joining game', e.message);
         }
-        function joinGame(gameRef){
-            gameRef.orderByChild('full').equalTo(false).limitToFirst(1).once('value', function (subSnapshot) {
+
+        function joinGame(gameRef) {
+            gameRef.orderByChild('full').equalTo(false).orderByChild('complete').equalTo(false).limitToFirst(1).once('value', function (subSnapshot) {
                 let currentGame = subSnapshot.toJSON();
-                if(!currentGame){
+                if (!currentGame) {
                     createGame();
                     return null
                 }
                 let currentGameId = Object.keys(currentGame)[0];
                 currentGame = currentGame[currentGameId];
-                if(currentGame.complete){
+                if (currentGame.complete) {
                     createGame();
                     return null
                 }
@@ -45,11 +46,13 @@ function play() {
                 window.location.href = 'choosePiece.html';
             });
         }
-        function createGame(){
+
+        function createGame() {
             //createnew
             let newGameData = {
                 users: {},
                 "private": false,
+                complete: false,
                 createTime: Date.now(),
                 full: false,
                 numUsers: 1,
@@ -67,6 +70,7 @@ function play() {
 
             window.location.href = 'choosePiece.html';
         }
+
         //console.log(snapshot);
     });
 }
