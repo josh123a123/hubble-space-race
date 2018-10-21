@@ -1,8 +1,12 @@
 $(document).on('click', '#confirmPieceBtn', confirmPiece);
 $(document).on('click', 'img', playSound);
+$(function(){
+    disablePieces();
+});
 
 function disablePieces() {
-    let user = firebase.auth().currentUser.providerData[0];
+    let user = firebase.auth();
+    user = user.currentUser.providerData[0];
     let uid = user.uid;
     let database = firebase.database();
     let userToGameRef = database.ref('/userToGame/' + uid);
@@ -15,7 +19,10 @@ function disablePieces() {
                 let currentGame = snapshot.toJSON();
                 let selectedPieces = currentGame.selectedPieces;
                 selectedPieces.forEach(function(value){
-                    //TODO:disable the ships on the screen
+                    console.log(value);
+                    $('#piecesDiv').find('input').filter(function(){
+                        return this.value==value;
+                    }).disable();
                 })
             });
 
