@@ -11,6 +11,7 @@ $(function () {
         let numQuestions = questions.length;
         let nextQuestion = Math.floor(Math.random() * numQuestions);
         nextQuestion = $(questions[nextQuestion]);
+        console.log(nextQuestion);
         if (skipValidation == 'true') {
             $('.questionContainer').hide();
             nextQuestion.show();
