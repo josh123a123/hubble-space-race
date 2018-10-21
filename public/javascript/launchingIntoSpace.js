@@ -1,3 +1,3 @@
 setTimeout(function(){
-    location.replace('./rules.html');
+    location.replace('./gameMap.html');
 }, 5000);
