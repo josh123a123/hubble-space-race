@@ -1,4 +1,4 @@
-#scoreBox{
+#scoreBox {
     position: absolute;
     top: 0;
     left: 0;
@@ -6,25 +6,23 @@
     border-bottom: 0.3em solid white;
 }
 
-#scoreBox > *{
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
-#chatBox{
+#chatBox {
     position: absolute;
     bottom: 0;
     left: 0;
+    height: 120px;
+    width:200px;
+    overflow: auto;
     border-right: 0.3em solid white;
     border-top: 0.3em solid white;
 }
 
-#chatBox > *{
+#chatBox > * {
     padding-left: 1em;
     padding-right: 1em;
 }
 
-#usersBox{
+#usersBox {
     position: absolute;
     top: 0;
     right: 0;
@@ -32,12 +30,12 @@
     border-bottom: 0.3em solid white;
 }
 
-#usersBox > *{
+#usersBox > * {
     padding-left: 1em;
     padding-right: 1em;
 }
 
-#mapContainer{
+#mapContainer {
     padding: 1em;
 }
 
