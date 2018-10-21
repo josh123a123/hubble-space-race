@@ -31,9 +31,19 @@ function play(){
 
                 window.location.href = 'choosePiece.html';
             } else{
-                snapshot.forEach(function(childSnapshot){
-                    console.log(childSnapshot);
-                })
+                gameRef.orderByChild('full').equalTo(false).limitToFirst(1).once('value', function(subSnapshot){
+                    let currentGame = subSnapshot.toJSON();
+                    let currentGameId = Object.keys(currentGame)[0]
+                    currentGame = currentGame[currentGameId];
+                    let currentGameRef = database.ref('/currentGames/' + currentGameId);
+                    currentGame.numUsers++;
+                    if(currentGame.numUsers === 6){
+                        currentGame.full = true;
+                    }
+                    user.userLocation = Math.floor(Math.random() * 15);
+                    currentGame.users[uid] = user;
+                    currentGameRef.set(currentGame);
+                });
             }
         } catch(e){
             console.error('error joining game', e.message);
