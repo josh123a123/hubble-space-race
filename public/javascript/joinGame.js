@@ -19,15 +19,17 @@ function play() {
         }
 
         function joinGame(gameRef) {
-            gameRef.orderByChild('full').equalTo(false).orderByChild('complete').equalTo(false).limitToFirst(1).once('value', function (subSnapshot) {
-                let currentGame = subSnapshot.toJSON();
-                if (!currentGame) {
-                    createGame();
-                    return null
-                }
-                let currentGameId = Object.keys(currentGame)[0];
-                currentGame = currentGame[currentGameId];
-                if (currentGame.complete) {
+            gameRef.orderByChild('full').equalTo(false).once('value', function (subSnapshot) {
+                let currentGame = null;
+                let currentGameId = null;
+                subSnapshot.forEach(function(childSnapshot){
+                    if(childSnapshot.val().complete === false){
+                        currentGameId = childSnapshot.key;
+                        currentGame = childSnapshot.val();
+                        return true;
+                    }
+                });
+                if (currentGame === null) {
                     createGame();
                     return null
                 }
